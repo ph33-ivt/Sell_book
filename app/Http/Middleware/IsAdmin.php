@@ -15,7 +15,7 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(\Auth::check()&&\Auth::user()->role_id== 'Admin'){
+        if(\Auth::check()&&\Auth::user()->role_id==1){
             return $next($request);    
         }
         return redirect()->back()->with('fail','You are not admin');

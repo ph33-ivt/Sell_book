@@ -46,6 +46,6 @@ class LoginController extends Controller
             }
             return view('admin.dashboard');
         }
-        return redirect()->back()->with('fail','Incorrect email or password');
+        return redirect()->back()->with('lang.en.messages');
     }
 }
