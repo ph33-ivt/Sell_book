@@ -42,10 +42,10 @@ class LoginController extends Controller
         if(\Auth::attempt($data)){
             $user=\Auth::user();
             if($user->role_id==2){
-                return redirect()->view('home');
+                return redirect()->route('home');
             }
-            return redirect()->view('admin.dasboard');
+            return view('admin.dashboard');
         }
-        return view('home');
+        return redirect()->back()->with('fail','Incorrect email or password');
     }
 }
