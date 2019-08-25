@@ -2,11 +2,16 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Comment;
 use Faker\Generator as Faker;
-
-$factory->define(Model::class, function (Faker $faker) {
+use App\User;
+use App\Product;
+$factory->define(Comment::class, function (Faker $faker) {
+	$listProductIds=Product::pluck('id');
+	$listUserIds=User::pluck('id');
     return [
-        //
+        'content'=>$faker->content,
+        'user_id'=>$faker->randomElement($listUserIds),
+        'product_id'=>$faker->randomElement($lisProducttIds)
     ];
 });
