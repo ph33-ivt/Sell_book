@@ -45,6 +45,6 @@ class LoginController extends Controller
             }
             return redirect()->route('user.user_login');
         }
-        return redirect()->back()->with('messages.fail');
+        return redirect()->back()->with('fail',trans('messages.fail'));
     }
 }
