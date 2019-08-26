@@ -17,13 +17,17 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 
-                                @if(session('fail'))
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ __('messages.fail') }}</strong>
+                               
+                               
+                                 @if(session('fail'))
+                                 
+                                    <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
                                     </span>
-                                @enderror
+                                     
                                 @endif
+                              
+                                
                             </div>
                         </div>
 
