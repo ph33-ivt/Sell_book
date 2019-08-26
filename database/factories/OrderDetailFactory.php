@@ -2,11 +2,17 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\OrderDetail;
 use Faker\Generator as Faker;
-
-$factory->define(Model::class, function (Faker $faker) {
+use App\Order;
+use App\Product;
+$factory->define(OrderDetail::class, function (Faker $faker) {
+	$listOrderIds=Order::pluck('id');
+	$listProductIds=Product::pluck('id');
     return [
-        //
+        'quantity'=>$faker->quantity,
+        'price'=>$faker->price,
+        'order_id'=>randomElement($listOrderIds),
+        'product_id'=>randomElement($listProductIds)
     ];
 });
