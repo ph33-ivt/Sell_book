@@ -25,6 +25,11 @@ Route::get('categories/{id}/edit','CategoryController@edit')->name('editCategory
 Route::put('categories/{id}','CategoryController@update')->name('updateCategory');
 Route::get('categories/{id}/delete','CategoryController@destroy')->name('deleteCategory');
 
+//form contact
+Route::get('/contact-us','ContactController@index')->name('form-contact');
+//send mail contact
+Route::post('/contact-us','ContactController@sendContact')->name('send-contact');
+
 Route::group([
 	'prefix'=> 'user',
 	'as'=>'user.',

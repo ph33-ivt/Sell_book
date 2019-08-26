@@ -35,7 +35,7 @@
                                 @if(session('fail'))
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ @lang('messages.fail') }}</strong>
+                                        <strong>{{ __('messages.fail') }}</strong>
                                     </span>
                                 @enderror
                                 @endif
@@ -50,7 +50,7 @@
 
                                 @error('age')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ @lang('messages.invalid') }}</strong>
+                                        <strong>{{ __('messages.invalid') }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -64,7 +64,7 @@
 
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ @lang('messages.invalid') }}</strong>
+                                        <strong>{{ __('messages.invalid') }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -78,7 +78,7 @@
 
                                 @error('tel')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ @lang('messages.invalid') }}</strong>
+                                        <strong>{{ __('messages.invalid') }}</strong>
                                     </span>
                                 @enderror
                             </div>

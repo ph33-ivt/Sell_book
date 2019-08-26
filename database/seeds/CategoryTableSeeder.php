@@ -11,7 +11,7 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
+        Category::insert([
         	'name'=> 'Truyện',
         	'parent_id'=>1,
         	'created_at'=>now(),

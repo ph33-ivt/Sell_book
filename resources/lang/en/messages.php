@@ -1,11 +1,8 @@
 <?php 
 	return[
-		'fail'=> 'Fail to login'
-	];
-	return[
-		'success'=>'Welcome'
-	];
-	return[
+		'fail'=> 'Fail to login',
+		'success'=>'Welcome',
 		'invalid'=>'Incorrect input, please input again'
 	];
+	
  ?>
