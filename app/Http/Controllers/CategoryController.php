@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-
+use App\Category;
 class CategoryController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $listCategory=Category::all();
+        return view('category.list_cate',compact('listCategory'));
+        
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create_cate');
     }
 
     /**
@@ -35,7 +37,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->except('_token');
+        $category=Category::create($data);
+        return redirect()->route('listCate',compact($category));
     }
 
     /**
@@ -55,9 +59,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category=Category::find('id');
+        $listCategory=Category::all();
+        return view('category.edit_cate',compact('category','listCategory'));
     }
 
     /**
@@ -67,9 +73,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request,$id)
     {
-        //
+        $category=Category::find($id);
+        $data=$request->all();
+        $category->update($data);
+        
     }
 
     /**
@@ -78,8 +87,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category=Category::find($id);
+        $category->delete();
+        return redirect()->route('listCate');
     }
 }

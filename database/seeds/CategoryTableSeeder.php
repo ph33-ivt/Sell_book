@@ -24,7 +24,7 @@ class CategoryTableSeeder extends Seeder
         	'updated_at'=>now()
         ],
     	[
-        	'name'=> '',
+        	'name'=> 'Văn Phòng Phẩm',
         	'parent_id'=>3,
         	'created_at'=>now(),
         	'updated_at'=>now()

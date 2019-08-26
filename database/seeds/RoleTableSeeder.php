@@ -20,6 +20,6 @@ class RoleTableSeeder extends Seeder
         	'name'=> 'User',
         	'created_at'=>now(),
         	'updated_at'=>now()
-        ])
+        ]);
     }
 }
