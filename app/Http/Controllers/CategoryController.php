@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-use App\Category;
+
 class CategoryController extends Controller
 {
     /**
@@ -61,7 +61,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category=Category::find('id');
+        $category=Category::find($id);
         $listCategory=Category::all();
         return view('category.edit_cate',compact('category','listCategory'));
     }

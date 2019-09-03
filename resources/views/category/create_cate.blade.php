@@ -1,7 +1,7 @@
-@extends(layouts.master)
+@extends('layouts.master')
 @section('content')
 	<h1>Form new category</h1>
-	<form action="route{{('storeCategory')}}" method="POST">
+	<form action="route{{('admin.storeCategory')}}" method="POST">
 		@csrf
 		<label for="">ID</label>
 		<input type="text" name="id">

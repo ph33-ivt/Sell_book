@@ -41,4 +41,10 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
+    public function orders(){
+        return $this->hasMany('App\Order');
+    }
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
 }

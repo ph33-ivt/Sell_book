@@ -10,9 +10,9 @@ $factory->define(OrderDetail::class, function (Faker $faker) {
 	$listOrderIds=Order::pluck('id');
 	$listProductIds=Product::pluck('id');
     return [
-        'quantity'=>$faker->quantity,
-        'price'=>$faker->price,
-        'order_id'=>randomElement($listOrderIds),
-        'product_id'=>randomElement($listProductIds)
+        'quantity'=>rand(1,20),
+        'price'=>rand(10000,500000),
+        'order_id'=>$faker->randomElement($listOrderIds),
+        'product_id'=>$faker->randomElement($listProductIds)
     ];
 });

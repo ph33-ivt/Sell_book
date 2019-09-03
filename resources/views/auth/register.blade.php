@@ -33,11 +33,11 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 
                                 @if(session('fail'))
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ __('messages.fail') }}</strong>
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
                                     </span>
-                                @enderror
+                                
                                 @endif
                             </div>
                         </div>
@@ -48,11 +48,13 @@
                             <div class="col-md-6">
                                 <input id="age" type="text" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
 
-                                @error('age')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ __('messages.invalid') }}</strong>
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
                                     </span>
-                                @enderror
+                                
+                                @endif
                             </div>
                         </div>
 
@@ -62,11 +64,13 @@
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ __('messages.invalid') }}</strong>
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
                                     </span>
-                                @enderror
+                                
+                                @endif
                             </div>
                         </div>
 
@@ -76,11 +80,13 @@
                             <div class="col-md-6">
                                 <input id="tel" type="text" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
 
-                                @error('tel')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ __('messages.invalid') }}</strong>
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
                                     </span>
-                                @enderror
+                                
+                                @endif
                             </div>
                         </div>
 

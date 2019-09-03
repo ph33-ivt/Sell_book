@@ -10,8 +10,8 @@ $factory->define(Comment::class, function (Faker $faker) {
 	$listProductIds=Product::pluck('id');
 	$listUserIds=User::pluck('id');
     return [
-        'content'=>$faker->content,
+        'content'=>Str::random(),
         'user_id'=>$faker->randomElement($listUserIds),
-        'product_id'=>$faker->randomElement($lisProducttIds)
+        'product_id'=>$faker->randomElement($listProductIds)
     ];
 });
