@@ -25,17 +25,80 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc649c2bdbf7e0c71d9b2b2a8de8e2d1d88e116d
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+<<<<<<< HEAD
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+=======
+                                
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
+                                    </span>
+                                
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="age" type="text" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
+
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
+                                    </span>
+                                
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
+                                    </span>
+                                
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tel" type="text" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
+
+                                @if(session('fail'))
+                             
+                                     <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
+                                    </span>
+                                
+                                @endif
+>>>>>>> cc649c2bdbf7e0c71d9b2b2a8de8e2d1d88e116d
                             </div>
                         </div>
 

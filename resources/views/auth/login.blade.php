@@ -16,12 +16,27 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+<<<<<<< HEAD
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+=======
+                                
+                               
+                               
+                                 @if(session('fail'))
+                                 
+                                    <span class="" role="alert" style="display:true; color: green;">
+                                        <strong>{{ session('fail') }}</strong>
+                                    </span>
+                                     
+                                @endif
+                              
+                                
+>>>>>>> cc649c2bdbf7e0c71d9b2b2a8de8e2d1d88e116d
                             </div>
                         </div>
 
