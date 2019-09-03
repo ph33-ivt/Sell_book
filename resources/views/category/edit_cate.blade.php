@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 	<h1>Edit category {{$category->name}}</h1>
-	<form action="{{route('updateCategory',$category->id)}}" method="POST">
+	<form action="{{route('admin.updateCategory',$category->id)}}" method="POST">
 		@csrf
 		@method('PUT')
 		<label for="">Name</label>

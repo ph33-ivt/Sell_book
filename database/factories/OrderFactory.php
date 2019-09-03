@@ -10,7 +10,7 @@ $factory->define(Order::class, function (Faker $faker) {
     return [
         'name'=>$faker->name,
         'address'=>$faker->address,
-        'tel'=>$faker->tel,
+        'tel'=>$faker->phoneNumber,
         'user_id'=>$faker->randomElement($listUserIds)
     ];
 });

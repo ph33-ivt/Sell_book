@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
-
+use App\Category;
 class ProductController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $listProduct=Product::with('category')->get();
+        return view('product.list_product',compact('listProduct'));
     }
 
     /**
@@ -24,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $listCategory=Category::all();
+        return view('product.list_product',compact('listCategory'));
     }
 
     /**
@@ -35,7 +37,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->except('_token');
+        $product=Product::create($data);
+        if($product){
+            return redirect()->route('listProduct')->with('success','Created');    
+        }
+        else{
+            return redirect()->back()->with('fail','Unable to create');    
+        }
+        
+        
     }
 
     /**
@@ -55,9 +66,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product=Product::with('category')->where('id',$id)->first();
     }
 
     /**
@@ -67,7 +78,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request,$id)
     {
         //
     }
@@ -78,7 +89,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
     }

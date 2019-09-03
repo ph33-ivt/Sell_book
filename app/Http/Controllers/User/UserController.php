@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Product;
 class UserController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.user_login');
+        $listProduct=Product::all();
+        return view('user.user_login',compact('listProduct'));
     }
 
     /**
@@ -22,6 +23,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function listProduct(){
+         $listProduct=Product::with('category')->get();
+        return view('product.list_product',compact('listProduct'));
+    }
     public function create()
     {
         //

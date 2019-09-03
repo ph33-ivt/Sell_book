@@ -26,7 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
         'age'=> rand(18,99),
         'address'=>$faker->address,
-        'tel'=>rand(100000000,999999999),
+        'tel'=>$faker->phoneNumber,
         'role_id'=>$faker->randomElement($listRoleIds),
     ];
 });
