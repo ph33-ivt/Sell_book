@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 //form contact
 Route::get('/contact-us','ContactController@index')->name('form-contact');
 //send mail contact
@@ -78,3 +77,4 @@ Route::get('/confirms','OrderController@formConfirm')->name('form-confirm');
 //send mail confirm
 Route::post('/confirms','OrderController@sendConfirmOrder')->name('send-confirm');
 });
+
