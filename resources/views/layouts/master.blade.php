@@ -26,12 +26,10 @@
   <link href="{{asset('assets suser/css/shop-homepage.css')}}" rel="stylesheet">
     
 </head>
-<body>
-
-    
-    
-        
-          <div class="content">
+<body>    
+      
+         <div class="content">
+          
               @yield('content')    
           </div>
        

@@ -1,5 +1,6 @@
-@extends('layouts.master')
-@section('content')
+@extends('admin.dashboard')
+
+@section('form_edit_product')
 <h1>Edit Product</h1>
 <form action="{{route('admin.updateProduct',$product->id)}}" method="POST">
 	@csrf

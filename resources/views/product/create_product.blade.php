@@ -1,10 +1,10 @@
-@extends('layouts.master')
-@section('content')
+
+@extends('admin.dashboard')
+@section('form_product')
 <h1>Form create product</h1>
 <form action="{{route('admin.storeProduct')}}">
 	@csrf
-	<label for="">ID</label>
-	<input type="text" name="id">
+	
 	<label for="">Name</label>
 	<input type="text" name="name">
 	<label for="">Price</label>
