@@ -27,8 +27,8 @@ class ProductController extends Controller
     public function create()
     {
         ;
-        $listProduct=Product::with('category')->where();
-        return view('product.list_product',compact('listCategory'));
+        $listCategory=Category::all();
+        return view('product.create_product',compact('listCategory'));
     }
 
     /**

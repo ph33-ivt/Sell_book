@@ -76,11 +76,21 @@ Admin page
           <span>Dashboard</span>
         </a>
       </li>
-      
-      
-      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Lists Managing</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="{{route('admin.listUser')}}">User</a>
+          <a class="dropdown-item" href="{{route('admin.listProduct')}}">Product</a>
+          <a class="dropdown-item" href="{{route('admin.listCate')}}">Category</a>
+          <a class="dropdown-item" href="{{route('admin.listOrder')}}">Order</a>
+        </div>
+      </li>
     </ul>
 
+    
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -136,10 +146,12 @@ Admin page
                 <div class="mr-5">123 New Orders!</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
+                
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
+                
               </a>
             </div>
           </div>
@@ -163,6 +175,9 @@ Admin page
 
       </div>
       <!-- /.container-fluid -->
+        @yield('listProducts')
+        @yield('form_product')
+         @yield('form_edit_product')
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
@@ -177,6 +192,7 @@ Admin page
     <!-- /.content-wrapper -->
 
   </div>
+  <!-- /.wrapper -->
 @endsection
   
 @section('scripts')
