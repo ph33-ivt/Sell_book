@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+@extends('admin.dashboard')
+@section('form_edit_category')
 	<h1>Edit category {{$category->name}}</h1>
 	<form action="{{route('admin.updateCategory',$category->id)}}" method="POST">
 		@csrf

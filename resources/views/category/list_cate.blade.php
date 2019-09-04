@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+@extends('admin.dashboard')
+@section('listCategories')
 	<h1>List Category</h1>
 	<table>
 		<thead>

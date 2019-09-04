@@ -1,4 +1,3 @@
-
 @extends('admin.dashboard')
 @section('form_product')
 <h1>Form create product</h1>
