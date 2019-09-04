@@ -1,4 +1,3 @@
-@extends('layouts.master')
 @extends('admin.dashboard')
 @section('listProducts')
 

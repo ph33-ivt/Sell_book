@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+@extends('admin.dashboard')
+@section('form_edit_user')
 <h1>Edit user</h1>
 <form action="{{route('admin.updateUser',$user->id)}}" method="POST">
 	@csrf
