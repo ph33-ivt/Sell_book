@@ -28,10 +28,11 @@
 </head>
 <body>    
       
+      
          <div class="content">
-          
               @yield('content')    
           </div>
+
        
         
   <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>

@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('form_category')
+@section('db_content')
 	<h1>Form new category</h1>
 	<form action="route{{('admin.storeCategory')}}" method="POST">
 		@csrf

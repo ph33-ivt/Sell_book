@@ -21,7 +21,7 @@
                                
                                  @if(session('fail'))
                                  
-                                    <span class="" role="alert" style="display:true; color: green;">
+                                    <span class="" role="alert" style="display:true; color: red;">
                                         <strong>{{ session('fail') }}</strong>
                                     </span>
                                      

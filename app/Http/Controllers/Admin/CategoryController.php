@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryEditRequest;
 class CategoryController extends Controller
 {
     /**
@@ -42,7 +43,11 @@ class CategoryController extends Controller
     {
         $data=$request->except('_token');
         $category=Category::create($data);
-        return redirect()->route('admin.listCate',compact($category));
+        if($data){
+        return redirect()->route('admin.listCate',compact('category'))->with('success','Created');    
+        }
+        return redirect()->back()->with('fail','Fail to update. Please check again.');
+
     }
 
     /**
@@ -76,12 +81,16 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(CategoryEditRequest $request,$id)
     {
         $category=Category::find($id);
         $data=$request->all();
         $category->update($data);
-        return redirect()->route('admin.listCate',compact('category'));
+        if($data){
+            return redirect()->route('admin.listCate',compact('category'))->with('success','Category updated');    
+        }
+        return redirect()->back()->with('fail','Fail to update. Please check again.');
+        
     }
 
     /**
@@ -94,7 +103,7 @@ class CategoryController extends Controller
     {
         $category=Category::find($id);
         $category->delete();
-        return redirect()->route('admin.listCate',compact('category'));
+        return redirect()->route('admin.listCate',compact('category'))->with('success','Category deleted');
     }
     public function listChildrenCategory($id){
         $children=Category::where('parent_id',$id)->get();
