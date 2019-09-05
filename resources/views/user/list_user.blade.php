@@ -18,22 +18,20 @@
 			<td>ID</td>
 			<td>Name</td>
 			<td>Email</td>
+			<td>Image</td>
 			<td>Role_id</td>
-			<td>Created_at</td>
-			<td>Updated_at</td>
 			<td colspan="2">Action</td>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($listUser as $user)
+		@foreach($listUser as $users)
 		<tr>
-			<td>{{$user->id}}</td>
-			<td>{{$user->name}}</td>
-			<td>{{$user->email}}</td>
-			<td>{{$user->role['id']}}</td>
-			<td>{{$user->created_at}}</td>
-			<td>{{$user->updated_at}}</td>
-			<td><a href="{{route('admin.editUser',$user->id)}}"><i class="fas fa-edit"></i></a></td>
+			<td>{{$users->id}}</td>
+			<td>{{$users->name}}</td>
+			<td>{{$users->email}}</td>
+			<td></td>
+			<td>{{$users->role['id']}}</td>
+			<td><a href="{{route('admin.editUser',$users->id)}}"><i class="fas fa-edit"></i></a></td>
 			<td><a href="" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a></td>
 		</tr>
 		@endforeach
@@ -54,7 +52,7 @@
         <div class="modal-body">Select "Confirm" below if you are ready to delete.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{route('admin.deleteUser',$user->id)}}">Confirm</a>
+          <a class="btn btn-primary" href="{{route('admin.deleteUser',$users->id)}}">Confirm</a>
         </div>
       </div>
     </div>

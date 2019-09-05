@@ -63,6 +63,8 @@ Route::post('/products','ProductController@store')->name('storeProduct');
 Route::get('/products/{id}/edit','ProductController@edit')->name('editProduct');
 Route::put('/products/{id}','ProductController@update')->name('updateProduct');
 Route::get('/products/{id}/delete','ProductController@destroy')->name('deleteProduct');
+Route::get('/products/{id}/description','ProductController@detail')->name('detailProduct');
+
 //manage user
 Route::get('/users','UserController@index')->name('listUser');
 Route::get('/users/{id}/edit','UserController@edit')->name('editUser');

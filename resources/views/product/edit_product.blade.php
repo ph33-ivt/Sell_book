@@ -52,14 +52,24 @@
 	<input type="text" name="description" value="{{$product->description}}">
 	@endif
 	<label for="">Image</label>
-	@if($errors->has('image'))
-	<input type="text" name="image" value="{{old('image')}}">
+	@if($errors->has('product_image'))
+	<input type="text" name="product_image" value="{{old('product_image')}}">
 	<p role="alert" style="color: red;">
-			{{$errors->first('image')}}
+			{{$errors->first('product_image')}}
 		</p>
 	@else
-	<input type="text" name="image" value="{{$product->image}}">
+	<input type="text" name="product_image" value="{{$product->product_image}}">
 	@endif
+	<div class="form-group row">
+        <label for="product_image" class="col-md-4 col-form-label text-md-right">Profile Image</label>
+            <div class="col-md-6">
+                <input id="product_image" type="file" class="form-control" name="product_image">
+                @if (auth()->user()->image)
+                    <code>{{ auth()->user()->image }}</code>
+                @endif
+            </div>
+    </div>
+
 	<label for="">Category ID</label>
 	<select name="category_id" >
 		@foreach($listCategory as $category)

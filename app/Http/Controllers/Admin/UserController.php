@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Http\Requests\UserEditRequest;
+use App\Http\Traits\UploadTrait;
 class UserController extends Controller
 {
     /**
@@ -14,6 +15,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $listUser=User::with('role')->get();
@@ -60,6 +66,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+
         $user=User::with('role')->where('id',$id)->first();
         return view('user.edit_user',compact('user'));
     }
@@ -73,9 +80,20 @@ class UserController extends Controller
      */
     public function update(UserEditRequest $request, $id)
     {
-        $user=User::with('role')->where('id',$id)->first();
+        $user = User::findOrFail(auth()->user()->id);
+        $user->name = $request->input('name');
+        if ($request->has('product_image')) {
+            $image = $request->file('product_image');
+            $name = str_slug($request->input('name')).'_'.time();
+            $folder = '/uploads/images/';
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);          
+            $user->profile_image = $filePath;
+        }
+            $user->save();
+        $users=User::with('role')->where('id',$id)->first();
         $data=$request->all();
-        $user->update($data);
+        $users->update($data);
         if($data){
             return redirect()->route('admin.listUser')->with('success','Updated');
         }

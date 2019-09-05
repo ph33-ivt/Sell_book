@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Http\Requests\ProductEditRequest;
+use App\Http\Traits\UploadTrait;
+use App\User;
 class ProductController extends Controller
 {
     /**
@@ -14,9 +16,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
+
     public function index()
     {
-        
          $listProduct=Product::with('category')->get();
          
         return view('product.list_product',compact('listProduct'));
@@ -85,6 +94,17 @@ class ProductController extends Controller
      */
     public function update(ProductEditRequest $request, $id)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        $user->name = $request->input('name');
+        if ($request->has('product_image')) {
+            $image = $request->file('product_image');
+            $name = str_slug($request->input('name')).'_'.time();
+            $folder = '/uploads/images/';
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);          
+            $user->profile_image = $filePath;
+        }
+            $user->save();
         $product=Product::with('category')->where('id',$id)->first();
         $data=$request->all();
         $product->update($data);
@@ -105,5 +125,10 @@ class ProductController extends Controller
         $product=Product::find($id);
         $product->delete();
         return redirect()->route('admin.listProduct',compact('product'))->with('success','Product deleted');
+    }
+    public function detail($id){
+        $product=Product::find($id);
+        $listProduct=Product::all();
+        return view('product.detail_product',compact('product','listProduct'));
     }
 }

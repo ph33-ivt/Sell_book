@@ -29,7 +29,7 @@ class ProductEditRequest extends FormRequest
             'quantity'=>'required|numeric|min:1',
             'status'=>'required|min:1',
             'description'=>'required|min:1',
-            'image'=>'required|min:1'
+            'product_image'=>'required|min:1'
 
         ];
     }
@@ -47,8 +47,8 @@ class ProductEditRequest extends FormRequest
             'status.min'=>'Must not be empty',
             'description.required'=>'Please fill in description',
             'description.min'=>'Must not be empty',
-            'image.required'=>'Please fill in image',
-            'image.min'=>'Must not be empty'
+            'product_image.required'=>'Please fill in image',
+            'product_image.min'=>'Must not be empty'
         ];
     }
 }

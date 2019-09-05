@@ -14,7 +14,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'price'=>rand(20000,50000),
         'status'=>rand(1,3),
         'description'=>Str::random(),
-        'image'=>$faker->image,
+        'product_image'=>$faker->image,
         'category_id'=>$faker->randomElement($listCategoryIds)
     ];
 });
