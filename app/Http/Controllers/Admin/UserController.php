@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Http\Requests\UserEditRequest;
 class UserController extends Controller
 {
     /**
@@ -59,7 +60,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::with('role')->where('role_id',$id)->first();
+        $user=User::with('role')->where('id',$id)->first();
         return view('user.edit_user',compact('user'));
     }
 
@@ -70,13 +71,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
-        $user=User::with('role')->where('role_id',$id)->first();
+        $user=User::with('role')->where('id',$id)->first();
         $data=$request->all();
         $user->update($data);
-        return redirect()->route('admin.listUser',compact('user'));
-        
+        if($data){
+            return redirect()->route('admin.listUser')->with('success','Updated');
+        }
+        else{
+            return redirect()->back()->with('fail','Fail to update. Please check again.');
+        }
 
     }
 
@@ -90,6 +95,8 @@ class UserController extends Controller
     {
         $user=User::find($id);
         $user->delete();
-        return redirect()->route('admin.listUser',compact('user'));
+        
+      return redirect()->route('admin.listUser',compact('user'))->with('success','User deleted');
+        
     }
 }

@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('form_product')
+@section('db_content')
 <h1>Form create product</h1>
 <form action="{{route('admin.storeProduct')}}">
 	@csrf

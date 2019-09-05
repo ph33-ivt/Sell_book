@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('form_edit_category')
+@section('db_content')
 	<h1>Edit category {{$category->name}}</h1>
 	<form action="{{route('admin.updateCategory',$category->id)}}" method="POST">
 		@csrf

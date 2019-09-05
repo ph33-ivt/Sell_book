@@ -7,7 +7,7 @@ Admin page
 @section('content')
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand mr-1" href="{{route('admin.dashboard')}}">Start Bootstrap</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -71,132 +71,36 @@ Admin page
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('admin.dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
+          <span><a class="nav-link toggle" href="{{route('admin.listUser')}}">User</a></span>
+          <span><a class="nav-link toggle" href="{{route('admin.listProduct')}}">Product</a></span>
+          <span><a class="nav-link toggle" href="{{route('admin.listCate')}}">Category</a></span>
+          <span><a class="nav-link toggle" href="{{route('admin.listOrder')}}">Order</a></span>
         </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Lists Managing</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="{{route('admin.listUser')}}">User</a>
-          <a class="dropdown-item" href="{{route('admin.listProduct')}}">Product</a>
-          <a class="dropdown-item" href="{{route('admin.listCate')}}">Category</a>
-          <a class="dropdown-item" href="{{route('admin.listOrder')}}">Order</a>
-        </div>
       </li>
     </ul>
 
     
-    <div id="content-wrapper">
+        <div id="content-wrapper">
 
-      <div class="container-fluid">
+          <!-- /.container-fluid -->
 
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Overview</li>
-        </ol>
+            <div class="liststable">
+            @yield('db_content')
+            </div>
+          <!-- Sticky Footer -->
+          <footer class="sticky-footer">
+            <div class="container my-auto">
+              <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2019</span>
+              </div>
+            </div>
+          </footer>
 
-        <!-- Icon Cards-->
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-comments"></i>
-                </div>
-                <div class="mr-5">26 New Messages!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">11 New Tasks!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">123 New Orders!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-                
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-life-ring"></i>
-                </div>
-                <div class="mr-5">13 New Tickets!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
         </div>
-
-      </div>
-      <!-- /.container-fluid -->
-        @yield('listProducts')
-        @yield('form_product')
-        @yield('form_edit_product')
-        @yield('listCategories')
-        @yield('form_category')
-        @yield('form_edit_category')
-        @yield('list_children')
-        @yield('listOrders')
-        @yield('listUsers')
-        @yield('form_edit_user')
-  
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
-
-    </div>
-    <!-- /.content-wrapper -->
+        <!-- /.content-wrapper -->
 
   </div>
   <!-- /.wrapper -->
@@ -212,7 +116,7 @@ Admin page
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{route('welcome')}}">Logout</a>
+          <a class="btn btn-primary" href="">Logout</a>
         </div>
       </div>
     </div>

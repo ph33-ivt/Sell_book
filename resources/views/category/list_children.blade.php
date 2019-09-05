@@ -1,13 +1,12 @@
 @extends('admin.dashboard')
-@section('list_children')
+@section('db_content')
 <h1>List Children Category</h1>
 <table>
 	<thead>
 		<tr>
 			<td>ID</td>
 			<td>Name</td>
-			<td>Created At</td>
-			<td>Updated At</td>
+		
 		</tr>
 	</thead>
 	<tbody>
@@ -15,8 +14,7 @@
 		<tr>
 			<td>{{$category->id}}</td>
 			<td>{{$category->name}}</td>
-			<td>{{$category->created_at}}</td>
-			<td>{{$category->updated_at}}</td>
+			
 		</tr>
 		@endforeach
 	</tbody>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Mail\ConfirmOrder;
 use App\Http\Requests\ConfirmRequest;
+use App\Http\Requests\OrderEditRequest;
 // use App\OrderDetail;
 use App\Order;
 class OrderController extends Controller
@@ -28,8 +29,9 @@ class OrderController extends Controller
     public function index()
     {
         $listOrder=Order::with('user')->get();
+      
         // $orderdetail=OrderDetail::with('order_details')->get();
-        return view('order.list_order',compact('listOrder'));
+        return view('order.list_order', compact('listOrder'));
     }
 
     /**
@@ -82,9 +84,15 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrderEditRequest $request, $id)
     {
-        //
+        $order=Order::find($id);
+        $data=$request->all();
+        $order->update($data);
+        if($data){
+            return redirect()->route('admin.listOrder')->with('success','Order updated');
+        }
+        return redirect()->back()->with('fail','Fail to update. Please check again.');
     }
 
     /**

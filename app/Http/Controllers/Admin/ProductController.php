@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
+use App\Http\Requests\ProductEditRequest;
 class ProductController extends Controller
 {
     /**
@@ -15,7 +16,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        
          $listProduct=Product::with('category')->get();
+         
         return view('product.list_product',compact('listProduct'));
     }
 
@@ -26,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        ;
+        
         $listCategory=Category::all();
         return view('product.create_product',compact('listCategory'));
     }
@@ -80,12 +83,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductEditRequest $request, $id)
     {
         $product=Product::with('category')->where('id',$id)->first();
         $data=$request->all();
         $product->update($data);
-        return redirect()->route('admin.listProduct',compact('product'));
+        if($data){
+        return redirect()->route('admin.listProduct',compact('product'))->with('success','Product updated');    
+        }
+        return redirect()->back()->with('fail','Fail to update. Please check again.');
     }
 
     /**
@@ -98,6 +104,6 @@ class ProductController extends Controller
     {
         $product=Product::find($id);
         $product->delete();
-        return redirect()->route('admin.listProduct',compact('product'));
+        return redirect()->route('admin.listProduct',compact('product'))->with('success','Product deleted');
     }
 }

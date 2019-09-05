@@ -73,7 +73,7 @@ class RegisterController extends Controller
     public function register(Request $request){
         $data=$request->except('_token');
         $data['password']=bcrypt($data['password']);
-        $data['role_id']=1;
+        $data['role_id']=2;
         $user=User::create($data);
         if($user){
             $this->guard()->login($user);

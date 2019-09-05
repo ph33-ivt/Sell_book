@@ -70,6 +70,28 @@ body {
   background-color: #fff;
 }
 
+body .liststable table{
+  display: inline-block;
+  width: 100%;
+  display:block;
+}
+
+body .liststable thead {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    
+}
+body .liststable tbody {
+    height: 200px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+
+body .liststable tr,td{
+  text-align: center;
+}
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
