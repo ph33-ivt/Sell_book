@@ -1,0 +1,21 @@
+@extends('admin.dashboard')
+@section('content')
+<table>
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Name</td>
+			<td>Email</td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach($users as $user1)
+		<tr>
+			<td>{{$user1->id}}</td>
+			<td>{{$user1->name}}</td>
+			<td>{{$user1->email}}</td>
+		</tr>
+		@endforeach
+	</tbody>
+</table>
+@endsection

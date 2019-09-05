@@ -51,6 +51,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+                
         $data=$request->except('_token');
         $product=Product::create($data);
         if($product){
