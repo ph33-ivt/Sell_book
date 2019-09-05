@@ -32,9 +32,9 @@
 						<td>{{$product->category['name']}}</td>
 						<td>{{$product->price}}</td>
 						<td>{{$product->quantity}}</td>
-						<td>{{$product->image}}</td>
+						<td>{{$product->product_image}}</td>
 						<td>{{$product->category['parent_id']}}</td>
-						<td><i class="fas fa-info-circle">Description</i></td>
+						<td><a href="{{route('admin.detailProduct',$product->id)}}"><i class="fas fa-info-circle"></i></a></td>
 						<td><a href="{{route('admin.editProduct',$product->id)}}"><i class="fas fa-edit"></i></a></td>
 						<td><a href="" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a></td>
 					</tr>

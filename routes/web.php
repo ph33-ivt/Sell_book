@@ -62,11 +62,16 @@ Route::post('/products','ProductController@store')->name('storeProduct');
 Route::get('/products/{id}/edit','ProductController@edit')->name('editProduct');
 Route::put('/products/{id}','ProductController@update')->name('updateProduct');
 Route::get('/products/{id}/delete','ProductController@destroy')->name('deleteProduct');
+Route::get('/products/{id}/description','ProductController@detail')->name('detailProduct');
+
 //manage user
 Route::get('/users','UserController@index')->name('listUser');
 Route::get('/users/{id}/edit','UserController@edit')->name('editUser');
 Route::put('/users/{id}','UserController@update')->name('updateUser');
 Route::get('/users/{id}/delete','UserController@destroy')->name('deleteUser');
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::post('/profile/update', 'ProfileController@updateProfile')->name('profileUpdate');
+
 
 //manage order
 Route::get('/orders','OrderController@index')->name('listOrder');

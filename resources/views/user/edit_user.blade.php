@@ -35,6 +35,15 @@
 	@else
 	<input type="text" name="tel" value="{{$user->tel}}">
 	@endif
+	<div class="form-group row">
+        <label for="product_image" class="col-md-4 col-form-label text-md-right">Profile Image</label>
+            <div class="col-md-6">
+                <input id="product_image" type="file" class="form-control" name="product_image">
+                @if (auth()->user()->image)
+                    <code>{{ auth()->user()->image }}</code>
+                @endif
+            </div>
+    </div>
 	
 	
 	<button type="submit">Submit</button>

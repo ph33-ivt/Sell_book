@@ -27,7 +27,7 @@ class UserEditRequest extends FormRequest
             'name'=>'required|min:1',
             'address'=>'required|min:1',
             'tel'=>'required|numeric|min:1',
-            // 'image'=>'required'
+            'user_image'=>'required'
         ];
     }
 
@@ -40,7 +40,7 @@ class UserEditRequest extends FormRequest
         'tel.required'=>'please input phone number',
         'tel.numeric'=>'phone number must be number',
         'tel.min'=>'phone number is incorrect'
-        // 'image.required'=>'image is required'
+        'user_image.required'=>'image is required'
         ];
     }
 }

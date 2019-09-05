@@ -11,7 +11,7 @@ class Product extends Model
     const IMPORTING=3;
     
     protected $fillable=[
-    	'name', 'status', 'price', 'quantity', 'description', 'image', 'category_id'
+    	'name', 'status', 'price', 'quantity', 'description', 'product_image', 'category_id'
     ];
     public function category(){
     	return $this->belongsTo('App\Category');
@@ -22,5 +22,8 @@ class Product extends Model
     public function orderdetails(){
     	return $this->hasMany('App\OrderDetail');
     }
-    
+    public function getImageAttribute()
+{
+   return $this->product_image;
+}
 }
