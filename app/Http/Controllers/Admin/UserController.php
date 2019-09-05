@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Traits\UploadTrait;
+
 class UserController extends Controller
 {
     /**
@@ -21,7 +22,8 @@ class UserController extends Controller
     }
 
     public function index()
-    {
+    {   
+        
         $listUser=User::with('role')->get();
         return view('user.list_user',compact('listUser'));
     }
@@ -117,4 +119,6 @@ class UserController extends Controller
       return redirect()->route('admin.listUser',compact('user'))->with('success','User deleted');
         
     }
+
+
 }

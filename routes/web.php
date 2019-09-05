@@ -70,9 +70,9 @@ Route::get('/users','UserController@index')->name('listUser');
 Route::get('/users/{id}/edit','UserController@edit')->name('editUser');
 Route::put('/users/{id}','UserController@update')->name('updateUser');
 Route::get('/users/{id}/delete','UserController@destroy')->name('deleteUser');
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::post('/profile/update', 'ProfileController@updateProfile')->name('profileUpdate');
-
+// Route::get('/profile', 'ProfileController@index')->name('profile');
+// Route::post('/profile/update', 'ProfileController@updateProfile')->name('profileUpdate');
+Route::get('/search','UserController@getSearch')->name('searchUser');
 
 //manage order
 Route::get('/orders','OrderController@index')->name('listOrder');

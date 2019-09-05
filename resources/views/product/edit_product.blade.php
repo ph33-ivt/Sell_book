@@ -51,7 +51,7 @@
 	@else
 	<input type="text" name="description" value="{{$product->description}}">
 	@endif
-	<label for="">Image</label>
+	
 	@if($errors->has('product_image'))
 	<input type="text" name="product_image" value="{{old('product_image')}}">
 	<p role="alert" style="color: red;">
@@ -61,7 +61,7 @@
 	<input type="text" name="product_image" value="{{$product->product_image}}">
 	@endif
 	<div class="form-group row">
-        <label for="product_image" class="col-md-4 col-form-label text-md-right">Profile Image</label>
+        <label for="product_image" class="col-md-4 col-form-label text-md-right">Product Image</label>
             <div class="col-md-6">
                 <input id="product_image" type="file" class="form-control" name="product_image">
                 @if (auth()->user()->image)
