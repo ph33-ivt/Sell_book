@@ -1,8 +1,16 @@
 @extends('admin.dashboard')
-
 @section('db_content')
+@if(session('success'))
+	<p role="alert" style="color: red;display: true;">
+		{{session('success')}}
+	</p>
+@else
+	<p role="alert" style="color: red;display: true;">
+		{{session('fail')}}
+	</p>
+@endif
 <h1>Edit Product</h1>
-<form action="{{route('admin.updateProduct',$product->id)}}" method="POST">
+<form action="{{route('admin.proimaUpdate',$product->id)}}" method="POST" enctype="multipart/form-data">
 	@csrf
 	@method('PUT')
 	<label for="">Name</label>
@@ -52,20 +60,12 @@
 	<input type="text" name="description" value="{{$product->description}}">
 	@endif
 	
-	@if($errors->has('product_image'))
-	<input type="text" name="product_image" value="{{old('product_image')}}">
-	<p role="alert" style="color: red;">
-			{{$errors->first('product_image')}}
-		</p>
-	@else
-	<input type="text" name="product_image" value="{{$product->product_image}}">
-	@endif
-	<div class="form-group row">
+		<div class="form-group row">
         <label for="product_image" class="col-md-4 col-form-label text-md-right">Product Image</label>
             <div class="col-md-6">
                 <input id="product_image" type="file" class="form-control" name="product_image">
-                @if (auth()->user()->image)
-                    <code>{{ auth()->user()->image }}</code>
+                @if ($product->product_image)
+                    <code>{{ $product->product_image }}</code>
                 @endif
             </div>
     </div>

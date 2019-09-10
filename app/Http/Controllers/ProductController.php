@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Category;
+use Session;
+use App\Cart;
 class ProductController extends Controller
 {
     /**
@@ -14,8 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $listProduct=Product::with('category')->get();
-        return view('product.list_product',compact('listProduct'));
+        $listProduct=Product::all();
+        return view('user.index',compact('listProduct'));
     }
 
     /**
@@ -92,5 +95,39 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    
+    public function getAddToCart(Request $request,$id)
+    {
+        $product=Product::find($id);
+        $oldCart=Session::has('cart') ? Session::get('cart') : null;
+        $cart=new Cart($oldCart);
+        $cart->add($product,$product->id);
+        $request->session()->put('cart',$cart);
+        return redirect()->route('user.listProduct');
+    }
+    public function getCart()
+    {
+        if(!Session::has('cart')){
+            return view('user.shoppingcart');
+        }
+        $oldCart=Session::get('cart');
+        $cart=new Cart($oldCart);
+        return view('user.shoppingcart',['listProduct'=>$cart->items, 'totalprice'=>$cart->totalprice]);
+    }
+    public function getCheckout()
+    {
+        if(!Session::has('cart')){
+            return view('user.shoppingcart');
+        }
+        $oldCart=Session::get('cart');
+        $cart=new Cart($oldCart);
+        $total= $cart->totalprice;
+        return view('user.checkout',['total'=>$total]);
+    }
+    public function Checkout()
+    {
+        
     }
 }

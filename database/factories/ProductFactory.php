@@ -8,8 +8,9 @@ use App\Category;
 
 $factory->define(Product::class, function (Faker $faker) {
 	$listCategoryIds=Category::pluck('id');
+    $categoryName=Category::pluck('name');
     return [
-        'name'=>$faker->name,
+        'name'=>$faker->randomElement($categoryName),
         'quantity'=>rand(1,20),
         'price'=>rand(20000,50000),
         'status'=>rand(1,3),

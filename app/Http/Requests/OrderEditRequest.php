@@ -24,7 +24,7 @@ class OrderEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1',
+            'name'=>'required|min:1|unique:orders,name',
             'address'=>'required|min:1',
             'tel'=>'required|numeric|min:1'
         ];
@@ -33,6 +33,7 @@ class OrderEditRequest extends FormRequest
         return [
             'name.required'=>'Input name', 
             'name.min'=>'Must not be empty',
+            'name.unique'=>'This order exists',
             'address.required'=>'Input address',
             'address.min'=>'Must not be empty',
             'tel.required'=>'Input telephone number',

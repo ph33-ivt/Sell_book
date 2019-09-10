@@ -24,7 +24,7 @@ class ProductEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1',
+            'name'=>'required|min:1|unique:products,name',
             'price'=>'required|numeric|min:1',
             'quantity'=>'required|numeric|min:1',
             'status'=>'required|min:1',
@@ -37,6 +37,7 @@ class ProductEditRequest extends FormRequest
         return [
             'name.required'=>'Please fill in name',
             'name.min'=>'Must not be empty',
+            'name.unique'=>'This product is in table already, please choose another',
             'price.required'=>'Please fill in price',
             'price.min'=>'Must not be empty',
             'price.numeric'=>'Must be number',

@@ -17,7 +17,8 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function formConfirm(){
+    public function formConfirm()
+    {
         return view('admin.confirmorder');
     }
     public function sendConfirmOrder(ConfirmRequest $request){
@@ -28,7 +29,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $listOrder=Order::with('user')->get();
+        $listOrder=Order::paginate(5);
       
         // $orderdetail=OrderDetail::with('order_details')->get();
         return view('order.list_order', compact('listOrder'));

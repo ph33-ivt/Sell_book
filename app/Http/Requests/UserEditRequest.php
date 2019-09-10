@@ -27,7 +27,7 @@ class UserEditRequest extends FormRequest
             'name'=>'required|min:1',
             'address'=>'required|min:1',
             'tel'=>'required|numeric|min:1',
-            'user_image'=>'required'
+            'user_image'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 
@@ -39,8 +39,11 @@ class UserEditRequest extends FormRequest
         'address.min'=>'please fill correct address',
         'tel.required'=>'please input phone number',
         'tel.numeric'=>'phone number must be number',
-        'tel.min'=>'phone number is incorrect'
-        'user_image.required'=>'image is required'
+        'tel.min'=>'phone number is incorrect',
+        'user_image.required'=>'image is required',
+        'user_image.image'=>'You must upload an image',
+        'user_image.mimes'=>'The format for image is not correct',
+        'user_image.max'=>'maximum size is 2048'
         ];
     }
 }
