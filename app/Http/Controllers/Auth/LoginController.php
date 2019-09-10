@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -39,12 +40,21 @@ class LoginController extends Controller
     public function login(Request $request){
 
         $data=$request->only('email','password');
-        if(\Auth::attempt($data)){
-            if(\Auth::user()->role_id==1){
+        if(\Auth::attempt($data))
+        {
+            $user=\Auth::user();
+            if($user->role_id==1)
+            {
                 return redirect()->route('admin.dashboard');
             }
-            return redirect()->route('user.user_login');
+            return redirect()->route('user.home');
         }
         return redirect()->back()->with('fail',trans('messages.fail'));
     }
+    public function logout(Request $request)
+    {
+          Auth::logout();
+          return view('welcome');
+    }
+   
 }

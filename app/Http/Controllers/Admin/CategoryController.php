@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $listCategory=Category::with('children')->whereNull('parent_id')->get()->toArray();
+        // $listCategory=Category::with('children')->whereNull('parent_id')->get()->toArray();
+        $listCategory=Category::where('parent_id',null)->get();
         // dd($listCategory);
         //toArray thì phải dùng dấu ngoặc vuông để lấy 1 phần tử trong mảng
         
@@ -105,9 +106,14 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('admin.listCate',compact('category'))->with('success','Category deleted');
     }
+
     public function listChildrenCategory($id){
         $children=Category::where('parent_id',$id)->get();
         
         return view('category.list_children',compact('children'));
+    }
+    public function getSearchChildren(Request $request)
+    {
+        $child=Category::where('name');
     }
 }

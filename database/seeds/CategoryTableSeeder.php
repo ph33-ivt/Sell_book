@@ -24,51 +24,14 @@ class CategoryTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now()
             ],
-           
             [
-            'name'=> 'Văn phòng phẩm',
-            'parent_id'=>null,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Sách khoa học',
-            'parent_id'=>2,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Bàn học',
-            'parent_id'=>3,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Sách tiếng Anh',
-            'parent_id'=>2,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Truyện cổ tích',
+            'name'=> 'Truyện ma',
             'parent_id'=>1,
             'created_at'=>now(),
             'updated_at'=>now()
             ],
             [
-            'name'=> 'Hộp bút chì màu',
-            'parent_id'=>3,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Truyện kinh dị',
-            'parent_id'=>1,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Sách tham khảo',
+            'name'=> 'Sách văn hóa',
             'parent_id'=>2,
             'created_at'=>now(),
             'updated_at'=>now()
@@ -80,26 +43,14 @@ class CategoryTableSeeder extends Seeder
             'updated_at'=>now()
             ],
             [
-            'name'=> 'Sách hóa học',
+            'name'=> 'Sách tham khảo',
             'parent_id'=>2,
             'created_at'=>now(),
             'updated_at'=>now()
             ],
             [
-            'name'=> 'Sổ tay',
-            'parent_id'=>3,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Truyện tranh doraemon',
+            'name'=> 'Truyện tranh',
             'parent_id'=>1,
-            'created_at'=>now(),
-            'updated_at'=>now()
-            ],
-            [
-            'name'=> 'Ba lô',
-            'parent_id'=>3,
             'created_at'=>now(),
             'updated_at'=>now()
             ],
@@ -110,14 +61,110 @@ class CategoryTableSeeder extends Seeder
             'updated_at'=>now()
             ],
             [
-            'name'=> 'Vở',
+            'name'=> 'Truyện ma Nguyễn Ngọc Ngạn',
             'parent_id'=>3,
             'created_at'=>now(),
             'updated_at'=>now()
             ],
             [
-            'name'=> 'Truyện ngụ ngôn',
-            'parent_id'=>1,
+            'name'=> 'Truyện ma tháng 7 cô hồn',
+            'parent_id'=>3,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện ma ko có thật',
+            'parent_id'=>3,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Sách toán',
+            'parent_id'=>4,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Sách hóa',
+            'parent_id'=>4,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Sách lý',
+            'parent_id'=>4,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện Conan',
+            'parent_id'=>5,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện Sherlock Holmes',
+            'parent_id'=>5,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện hỏa ngục',
+            'parent_id'=>5,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Sách giải toán',
+            'parent_id'=>6,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Sách giải hóa',
+            'parent_id'=>6,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Sách giải lý',
+            'parent_id'=>6,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện tranh Doraemon',
+            'parent_id'=>7,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện tranh Lonney Tones',
+            'parent_id'=>7,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Truyện tranh Tom & Jerry',
+            'parent_id'=>7,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Cuốn theo chiều gió',
+            'parent_id'=>8,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Hoàng tử bé',
+            'parent_id'=>8,
+            'created_at'=>now(),
+            'updated_at'=>now()
+            ],
+            [
+            'name'=> 'Chúa tể của những chiếc nhẫn',
+            'parent_id'=>8,
             'created_at'=>now(),
             'updated_at'=>now()
             ],

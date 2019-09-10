@@ -24,14 +24,15 @@ class CategoryEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1'
+            'name'=>'required|min:1|unique:categories,name'
 
         ];
     }
     public function messages(){
         return [
             'name.required'=>'Category must not be empty',
-            'name.min'=> 'One category requires'
+            'name.min'=> 'One category requires',
+            'name.unique'=> 'This category exists already'
         ];
     }
 }

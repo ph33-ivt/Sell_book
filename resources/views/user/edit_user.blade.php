@@ -1,9 +1,19 @@
 @extends('admin.dashboard')
 @section('db_content')
+@if(session('success'))
+	<p role="alert" style="color: red;display: true;">
+		{{session('success')}}
+	</p>
+@else
+	<p role="alert" style="color: red;display: true;">
+		{{session('fail')}}
+	</p>
+@endif
 <h1>Edit user</h1>
-<form action="{{route('admin.updateUser',$user['id'])}}" method="POST">
+<form action="{{route('admin.profileUpdate',$user->id)}}" method="POST" enctype="multipart/form-data">
 	@csrf
 	@method('PUT')
+
 	
 	<label for="name">Name</label>
 	@if($errors->has('name'))
@@ -36,16 +46,14 @@
 	<input type="text" name="tel" value="{{$user->tel}}">
 	@endif
 	<div class="form-group row">
-        <label for="product_image" class="col-md-4 col-form-label text-md-right">Profile Image</label>
+        <label for="user_image" class="col-md-4 col-form-label text-md-right">User Image</label>
             <div class="col-md-6">
-                <input id="product_image" type="file" class="form-control" name="product_image">
+                <input id="user_image" type="file" class="form-control" name="user_image">
                 @if (auth()->user()->image)
                     <code>{{ auth()->user()->image }}</code>
                 @endif
             </div>
     </div>
-	
-	
 	<button type="submit">Submit</button>
 </form>
 @endsection

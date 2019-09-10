@@ -12,14 +12,22 @@
 @endif
 
 <h1>List Order</h1>
-<table>
+
+<div class="topnav">
+		  <div class="search-container" style="float: right;">
+		    <form action="/action_page.php">
+		      <input type="text" placeholder="Search.." name="search">
+		      <button type="submit"><i class="fa fa-search"></i></button>
+		    </form>
+		  </div>
+		</div>
+<table class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<td>ID</td>
 			<td>Name</td>
 			<td>Address</td>
 			<td>Tel</td>
-			<td>User ID</td>
 			<td colspan="2">Action</td>
 			
 		</tr>
@@ -31,13 +39,13 @@
 			<td>{{$order->name}}</td>
 			<td>{{$order->address}}</td>
 			<td>{{$order->tel}}</td>
-			<td>{{$order->user['user_id']}}</td>
 			<td><a href=""><i class="fas fa-edit"></i></a></td>
 			<td><a href="" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a></td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
+		{{$listOrder->links()}}
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

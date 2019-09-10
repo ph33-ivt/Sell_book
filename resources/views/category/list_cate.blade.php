@@ -13,14 +13,12 @@
 
 	<h1>List Category</h1>
 	<button><a href="{{route('admin.createCate')}}"><i class="far fa-plus-square"></i></a></button>
-	<table>
+	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<td>ID</td>
 				<td>Name</td>
 				<td>Parent_id</td>
-				<td>Created_at</td>
-				<td>Updated_at</td>
 				<td colspan="2">Action</td>
 				
 			</tr>
@@ -31,8 +29,6 @@
 				<td>{{$category['id']}}</td>
 				<td><a href="{{route('admin.list-children',$category['id'])}}">{{$category['name']}}</a></td>
 				<td>{{$category['parent_id']}}</td>
-				<td>{{$category['created_at']}}</td>
-				<td>{{$category['updated_at']}}</td>
 				<td><a href="{{route('admin.editCategory',$category['id'])}}"><i class="fas fa-edit"></i>Edit</a></td>
 				<td><a href="" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i>Delete</a></td>
 			</tr>

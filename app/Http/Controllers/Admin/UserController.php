@@ -7,10 +7,13 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Http\Requests\UserEditRequest;
-use App\Http\Traits\UploadTrait;
+use Auth;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Collection;
 
 class UserController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +27,7 @@ class UserController extends Controller
     public function index()
     {   
         
-        $listUser=User::with('role')->get();
+        $listUser=User::paginate(5);
         return view('user.list_user',compact('listUser'));
     }
 
@@ -69,8 +72,8 @@ class UserController extends Controller
     public function edit($id)
     {
 
-        $user=User::with('role')->where('id',$id)->first();
-        return view('user.edit_user',compact('user'));
+        $userID=User::find($id);
+        return view('user.edit_user',compact('userID'));
     }
 
     /**
@@ -80,31 +83,39 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserEditRequest $request, $id)
+    public function updateUserImage(UserEditRequest $request, $id)
     {
+        
+        $user=User::find($id);
         $user = User::findOrFail(auth()->user()->id);
         $user->name = $request->input('name');
-        if ($request->has('product_image')) {
-            $image = $request->file('product_image');
-            $name = str_slug($request->input('name')).'_'.time();
-            $folder = '/uploads/images/';
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
-            $this->uploadOne($image, $folder, 'public', $name);          
-            $user->profile_image = $filePath;
+        if ($request->has('user_image'))
+        {
+            $image = $request->file('user_image');
+        $name = str_slug($request->input('name')).'_'.time();
+        $folder = '/public/images/user/';
+        $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+        $this->uploadOne($image, $folder, 'public', $name);
+        $user->user_image = $filePath;
         }
             $user->save();
-        $users=User::with('role')->where('id',$id)->first();
+            return redirect()->route('admin.listUser');
+
+    }
+    public function update(Request $request, $id)
+    {
+        $user=User::find($id);
         $data=$request->all();
-        $users->update($data);
+        $user->update($data);
         if($data){
             return redirect()->route('admin.listUser')->with('success','Updated');
         }
         else{
             return redirect()->back()->with('fail','Fail to update. Please check again.');
         }
-
     }
-
+    
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -119,6 +130,18 @@ class UserController extends Controller
       return redirect()->route('admin.listUser',compact('user'))->with('success','User deleted');
         
     }
+    public function logout(Request $request)
+    {
+          Auth::logout();
+          return view('welcome');
+    }
 
-
+    public function getSearch(Request $request)
+    {
+        $user=User::where('name','like','%'.$request->search.'%')
+                    ->orWhere('email','like','%'.$request->search.'%')
+                    ->get();
+        return view('user.search',compact('user'));
+    }
+   
 }

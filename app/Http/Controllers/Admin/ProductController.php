@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Http\Requests\ProductEditRequest;
-use App\Http\Traits\UploadTrait;
+use App\Traits\UploadTrait;
 use App\User;
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +28,8 @@ class ProductController extends Controller
 
     public function index()
     {
-         $listProduct=Product::with('category')->get();
-         
+         $listProduct=Product::paginate(5);
+
         return view('product.list_product',compact('listProduct'));
     }
 
@@ -40,7 +42,8 @@ class ProductController extends Controller
     {
         
         $listCategory=Category::all();
-        return view('product.create_product',compact('listCategory'));
+        $product=Product::all();
+        return view('product.create_product',compact('listCategory','product'));
     }
 
     /**
@@ -93,19 +96,26 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductEditRequest $request, $id)
+    public function updateProImage(Request $request,$id)
     {
-        $user = User::findOrFail(auth()->user()->id);
-        $user->name = $request->input('name');
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('name');
         if ($request->has('product_image')) {
             $image = $request->file('product_image');
             $name = str_slug($request->input('name')).'_'.time();
-            $folder = '/uploads/images/';
+            $folder = '/public/images/product/';
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+
             $this->uploadOne($image, $folder, 'public', $name);          
-            $user->profile_image = $filePath;
+            $product->product_image = $filePath;
         }
-            $user->save();
+           
+            $product->save();
+            return redirect()->route('admin.listProduct');
+    }
+    public function update(ProductEditRequest $request, $id)
+    {
+        
         $product=Product::with('category')->where('id',$id)->first();
         $data=$request->all();
         $product->update($data);
@@ -131,5 +141,13 @@ class ProductController extends Controller
         $product=Product::find($id);
         $listProduct=Product::all();
         return view('product.detail_product',compact('product','listProduct'));
+    }
+    public function getSearch(Request $request)
+    {
+        $products=Product::where('name','like','%'.$request->search.'%')
+                        ->orWhere('price',$request->search)
+                        ->get();
+
+        return view('product.search',compact('products'));
     }
 }
