@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 
 
+
 Auth::routes();
-Route::get('logout','LoginController@logout')->name('logout');
+
+
+
 
 //form contact
 
@@ -92,3 +95,4 @@ Route::get('/confirms','OrderController@formConfirm')->name('form-confirm');
 //send mail confirm
 Route::post('/confirms','OrderController@sendConfirmOrder')->name('send-confirm');
 });
+
